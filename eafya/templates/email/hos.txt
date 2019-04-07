@@ -1,0 +1,2 @@
+Dear {{name}}
+This is your {{hospital_number}}. Kindly keeep this number a secret and do not reveal it to anyone.

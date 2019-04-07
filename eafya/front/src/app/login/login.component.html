@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <!-- <link rel="stylesheet" href="a.css"> -->
+  </head>
+  <body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <!-- Sign Up form code goes here -->
+    <form #regForm="ngForm">
+       <h1>Create Account</h1>
+       <div class="social-container">
+           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+       </div>
+       <span>or use your email for registration</span>
+       <input type="text" placeholder="Name" [(ngModel)]="regDetails.username" required  name="username" />
+       <input type="email" placeholder="Email" [(ngModel)]="regDetails.email" required name="email" />
+       <input type="password" placeholder="Password" [(ngModel)]="regDetails.password" required name="password" />
+       <button (click)="registers()">Sign Up</button>
+   </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <!-- Sign In form code goes here -->
+        <form #logForm="ngForm">
+        <h1>Sign in</h1>
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        <input type="text" placeholder="username" [(ngModel)]="logDetails.username" required name="username" />
+        <input type="password" placeholder="Password" [(ngModel)]="logDetails.password" required name="login"/>
+        <a href="#">Forgot your password?</a>
+        <button (click)="logsIn()">Sign In</button>
+    </form>
+        </div>
+        <div class="overlay-container">
+            <!-- The overlay code goes here -->
+            <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+                To continue please login.
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+            <h1>Hello, u a Doctor</h1>
+            <p>Enter your  details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="registers">
+      <p>Hello there....</p>
+      <p>U a patient.... Register to the eafya System <a routerLink="/register">here</a></p>
+    </div>
+    <!-- <script src="a.js" type="text/javascript" charset="utf-8"></script> -->
+  </body>
+</html>

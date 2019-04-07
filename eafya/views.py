@@ -8,10 +8,12 @@ from django.contrib.auth import login,logout,authenticate
 from rest_framework import status
 from rest_framework.response import Response
 from drf_haystack.viewsets import HaystackViewSet
+from rest_framework.parsers import JSONParser,FormParser,MultiPartParser,FileUploadParser
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 class PatientViewSerializer(generics.CreateAPIView):
+    parser_classes = (MultiPartParser,JSONParser,)
     serializer_class = PatientCreateSerializer
 class PatientDetailsView(viewsets.ModelViewSet):
     serializer_class = PatientDetailsSerializer
@@ -27,7 +29,7 @@ class LoginView(APIView):
         password = request.data.get('password')
         user = authenticate(username=username,password=password)
         if user:
-            return Response(login(user,request),status=status.HTTP_200)
+            return Response(login(request,user))
         else:
             return Response({"wrong credential providers"},status = status.HTTP_404_NOT_FOUND)
 class PatientSearch(HaystackViewSet):

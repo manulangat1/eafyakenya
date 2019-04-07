@@ -1,0 +1,9 @@
+<div class="registration">
+  <form [formGroup]="yourForm">
+    <input type="text" name="name" formControlName="name" />
+    <input type="number" name="age" formControlName="age" />
+    <input type="email" name="email" formControlName="email" />
+    <input type="file" name="pic" (change)="onFileSelected($event)">
+    <button type="button" (click)="createPat()">Sign Up</button>
+  </form>
+</div>

@@ -21,6 +21,7 @@ class Patient(models.Model):
     name = models.CharField(max_length=129)
     age =  models.PositiveIntegerField()
     hospital_number = models.PositiveIntegerField()
+    email = models.EmailField(default=1)
     pic = models.ImageField(upload_to='pictures/')
 
     def __str__(self):

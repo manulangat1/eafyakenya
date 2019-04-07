@@ -9,3 +9,12 @@ def send_welcome_email(username,receiver):
     msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
     msg.attach_alternative(html_content,'text/html')
     msg.send()
+def send_hospital_number(name,hospital_number,receiver):
+    subject = 'your hospital_number'
+    sender = 'emmanuelthedeveloper@gmail.com'
+    #passing in the context variable
+    text_content = render_to_string('email/hos.txt',{"name":name,"hospital_number":hospital_number})
+    html_content = render_to_string('email/hos.html',{"name":name,"hospital_number":hospital_number})
+    msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
+    msg.attach_alternative(html_content,'text/html')
+    msg.send()
