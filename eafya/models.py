@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Doctor(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    registration = models.PositiveIntegerField()
+    registration = models.PositiveIntegerField(unique=True)
     def __str__(self):
         return self.name
     def save_doc(self):
@@ -20,8 +20,8 @@ class  Hospital(models.Model):
 class Patient(models.Model):
     name = models.CharField(max_length=129)
     age =  models.PositiveIntegerField()
-    hospital_number = models.PositiveIntegerField()
-    email = models.EmailField(default=1)
+    hospital_number = models.PositiveIntegerField(unique=True)
+    email = models.EmailField(default=1,unique=True)
     pic = models.ImageField(upload_to='pictures/')
 
     def __str__(self):
@@ -35,3 +35,11 @@ class History(models.Model):
     text = models.TextField()
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+class Home(models.Model):
+    name = models.CharField(max_length=46)
+    text = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.name
+    def save_home(self):
+        self.save()

@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   logsIn(logData){
     this.api.login(this.logDetails).subscribe((data:{})=>{
       console.log("log in successfull")
+      this.router.navigate(['/home'])
     }, (err)=>{
       console.log(err)
     })

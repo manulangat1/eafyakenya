@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ButtonsDirective } from './buttons.directive';
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
+import { HomeComponent } from './home/home.component';
+import { HomedetailsComponent } from './homedetails/homedetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ButtonsDirective,
-    PatientRegisterComponent
+    PatientRegisterComponent,
+    HomeComponent,
+    HomedetailsComponent
   ],
   imports: [
     BrowserModule,

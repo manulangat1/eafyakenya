@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eafya.apps.EafyaConfig',
     'rest_framework',
-    'haystack'
+    'django_elasticsearch_dsl'
+    # 'haystack'
 ]
 
 MIDDLEWARE = [
@@ -136,14 +137,8 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-#haystack configurations for search
-# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
-HAYSTACK_CONNECTIONS = {
-    'default':{
-        # 'ENGINE': 'haystack.backends.elasticsearch_backend.elasticsearchSearchEngine',
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL':'http://127.0.0.1:9200/',
-        'INDEX_NAME': 'haystack',
-    }
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://127.0.0.1:9200/'
+    },
 }

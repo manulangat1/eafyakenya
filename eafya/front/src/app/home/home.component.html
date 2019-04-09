@@ -1,0 +1,26 @@
+<div class="home">
+  <div class="navigation">
+    <ul>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a href="#">hs</a></li>
+      <li><input type="text" (keyup)="onKeyUp($event)"  placeholder="Enter patient no here" name="q"><button (click)="getSearch()" name="button">Search</button></li>
+      <!-- <input type="text" (keyup)="onKeyUp($event)"  placeholder="Enter patient no here" name="q"><button (click)="getSearch()" name="button">Search</button> -->
+    </ul>
+  </div>
+  <div class="anno">
+    <h1>hello there</h1>
+    <p>
+      this is it??????????????????????????????????????????
+    </p>
+  </div>
+  <div class="hos">
+    <div *ngFor='let h of homes'>
+      <a routerLink="home/det/{{h.id}}">
+      <h6>{{h.name}}</h6>
+      </a>
+      <p>{{h.text}}</p>
+      <p>posted on: {{h.pub_date | date}}</p>
+      <hr>
+    </div>
+  </div>
+</div>

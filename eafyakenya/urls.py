@@ -18,5 +18,6 @@ from django.conf.urls import url,include
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'',include('eafya.urls'))
+    url(r'',include('eafya.urls')),
+    # (r'^search/', include(haystack.urls)),
 ]

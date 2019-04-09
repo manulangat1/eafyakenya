@@ -1,12 +1,12 @@
-from .models import Patient,Doctor,Hospital,History
+from .models import Patient,Doctor,Hospital,History,Home
 from rest_framework import serializers
 # from .random import hosp_random
-from .search_indexes import PatientIndex
+# from .search_indexes import PatientIndex
 import random
 from .tasks import send_welcome_email_task,send_hospital_number_task
 from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
-from drf_haystack.serializers import HaystackSerializer
+# from drf_haystack.serializers import HaystackSerializer
 #crreate your serializers here.
 class PatientCreateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,7 +31,7 @@ class PatientDetailsSerializer(serializers.ModelSerializer):
     history = HistorySerializer(many=True)
     class Meta:
         model = Patient
-        fields = ('name','age','pic','email','history',)
+        fields = ('name','age','pic','email','history','hospital_number',)
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -45,9 +45,21 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         send_welcome_email_task.delay(username,email)
         return user
-class PatientSearchSerializer(HaystackSerializer):
+# class PatientSearchSerializer(HaystackSerializer):
+#     class Meta:
+#         index_classes = [PatientIndex]
+#         fields = [
+#           "name","hospital_number"
+#         ]
+class HomeSerializer(serializers.ModelSerializer):
     class Meta:
-        index_classes = [PatientIndex]
-        fields = [
-          "name","hospital_number"
-        ]
+        model = Home
+        fields = '__all__'
+from django_elasticsearch_dsl_drf.serializers import DocumentSerializer
+
+from eafya import documents as articles_documents
+
+class PatientDocumentSerializer(DocumentSerializer):
+    class Meta:
+        document = articles_documents.PatientDocument
+        fields = '__all__'

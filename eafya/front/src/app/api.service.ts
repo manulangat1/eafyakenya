@@ -29,5 +29,10 @@ export class ApiService {
   createPatient(pat){
     return this.http.post('/createpatient/',pat)
   }
-
+  getHome(){
+    return this.http.get('/home/')
+  }
+  getHomeById(id){
+    return this.http.get('/home/' + id + '/')
+  }
 }

@@ -90,7 +90,10 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    margin: auto;
+    margin-right:  190px;
+    border-right: 1px solid gray;
+    padding: 1em;
+    /* height: 100%; */
 }
 .form-container {
     position: absolute;
@@ -207,8 +210,9 @@ input {
   background-color: lightblue;
   border-radius: 10px;
   text-align: center;
-  width: 768px;
-  margin: auto;
+  width: 470px;
+  float: right;
+  height: 100%;
 }
 .registers p{
   font-style: italic;
@@ -221,4 +225,8 @@ input {
 .register p a:hover{
   color: #aa12ff;
   cursor: pointer;
+}
+body{
+  background-color: rgba(245, 0.2, 0.156, 0.5);
+  height: 100%;
 }
