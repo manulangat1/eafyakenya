@@ -23,5 +23,6 @@ class PatientDocument(DocType):
         fields = [
         'age',
         'hospital_number',
-        'name'
+        'name',
+        'email'
         ]

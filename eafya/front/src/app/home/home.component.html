@@ -1,26 +1,47 @@
 <div class="home">
   <div class="navigation">
     <ul>
-      <li><a routerLink="/home">Home</a></li>
-      <li><a href="#">hs</a></li>
-      <li><input type="text" (keyup)="onKeyUp($event)"  placeholder="Enter patient no here" name="q"><button (click)="getSearch()" name="button">Search</button></li>
-      <!-- <input type="text" (keyup)="onKeyUp($event)"  placeholder="Enter patient no here" name="q"><button (click)="getSearch()" name="button">Search</button> -->
+      <li style="float:left"><a routerLink="/home">Home</a></li>
+      <li><a routerLink="">hs</a></li>
+      <div class="topnav-centered">
+        <input type="text" (keyup)="onKeyUp($event)"  placeholder="Enter patient no here" name="search"><button (click)="getSearch()" name="button"><i class="fas fa-search"></i></button>
+      </div>
+      <li><a routerLink="/register">Add Patient</a></li>
     </ul>
   </div>
-  <div class="anno">
-    <h1>hello there</h1>
-    <p>
-      this is it??????????????????????????????????????????
-    </p>
-  </div>
   <div class="hos">
-    <div *ngFor='let h of homes'>
+    <!-- <button type="button" (click)="toggle()"  id="bt">{{buttonName}}</button> -->
+    <div class="pls" *ngFor="let p of pls ">
+      <h6>Name is {{p.name}}</h6>
+      <img src="{{p.pic}}" alt="patients image" class="img-responsive">
+      <p> Age : {{p.age}}</p>
+      <div class="" >
+        <table>
+          <thead>
+            <th> Diagnosis </th>
+            <th> Created </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hi of p.history">
+              <td>{{hi.text}}</td>
+              <td>{{hi.created}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <p>{{hi.text}}</p> -->
+      </div>
+    </div>
+    <hr>
+    <div class="homes" *ngFor="let h of homes">
+      <h5>Announcements</h5>
       <a routerLink="home/det/{{h.id}}">
-      <h6>{{h.name}}</h6>
+      <h6>{{h.name }}</h6>
       </a>
-      <p>{{h.text}}</p>
-      <p>posted on: {{h.pub_date | date}}</p>
-      <hr>
+      <p>{{h.text }}</p>
+      <p>{{h.pub_date | date }}</p>
+    </div>
+    <div class="footer">
+      <p>hello there, this is one of those times</p>
     </div>
   </div>
 </div>

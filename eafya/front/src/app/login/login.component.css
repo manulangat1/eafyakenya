@@ -90,9 +90,11 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    margin-right:  190px;
+    /* max-height: 100%; */
+    margin: auto;
+    /* margin-right:  190px;
     border-right: 1px solid gray;
-    padding: 1em;
+    padding: 1em; */
     /* height: 100%; */
 }
 .form-container {
@@ -205,28 +207,21 @@ input {
 .container.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
-.registers {
-  border: 1px solid #ff146d;
-  background-color: lightblue;
-  border-radius: 10px;
+.nots{
+  clear: both;
+  padding-top: 20px;
   text-align: center;
-  width: 470px;
-  float: right;
-  height: 100%;
 }
-.registers p{
-  font-style: italic;
-  line-height: 28px;
+.notss{
+  border-radius: 4px;
+  color: rgb(89, 242, 0.5);
 }
-.register p a{
-  text-decoration: none;
-  color: #ddf12c;
-}
-.register p a:hover{
-  color: #aa12ff;
-  cursor: pointer;
-}
+.nots input{
+  width: 30%;
+  margin: auto;
+ }
 body{
   background-color: rgba(245, 0.2, 0.156, 0.5);
   height: 100%;
+  background-size: cover;
 }

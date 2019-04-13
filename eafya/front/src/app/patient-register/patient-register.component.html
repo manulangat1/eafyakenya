@@ -1,9 +1,19 @@
-<div class="registration">
-  <form [formGroup]="yourForm">
-    <input type="text" name="name" formControlName="name" />
-    <input type="number" name="age" formControlName="age" />
-    <input type="email" name="email" formControlName="email" />
-    <input type="file" name="pic" (change)="onFileSelected($event)">
-    <button type="button" (click)="createPat()">Sign Up</button>
-  </form>
-</div>
+<body>
+  <div class="registration">
+    <img src="/assets/pic2.png" alt="an image" class="avatar">
+    <h1>Add new patient</h1>
+    <div class="form-group">
+      <form [formGroup]="yourForm">
+        <p>Full Names</p>
+        <input type="text" placeholder="Enter  name" name="name" formControlName="name" /><br>
+        <p>Patients Age</p>
+        <input type="number" placeholder="age ...." name="age" formControlName="age" /><br>
+        <p>Patients Email</p>
+        <input type="email" placeholder="enter email..." name="email" formControlName="email" /><br>
+        <input type="file" name="pic" (change)="onFileSelected($event)"><br>
+        <input type="submit" (click)="createPat()" value="Sign Up">
+        <!-- <button (click)="createPat()"> Add patient</button> -->
+      </form>
+    </div>
+  </div>
+</body>

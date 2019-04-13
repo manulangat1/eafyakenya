@@ -35,4 +35,7 @@ export class ApiService {
   getHomeById(id){
     return this.http.get('/home/' + id + '/')
   }
+  postHistory(histo){
+    return this.http.post('/history/',histo)
+  }
 }

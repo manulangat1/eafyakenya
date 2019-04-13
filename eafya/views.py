@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from .models import Patient,Doctor,Hospital,History,Home
-from .serializers import HomeSerializer,UserSerializer,PatientCreateSerializer,PatientDetailsSerializer,HistorySerializer
+from .serializers import PatientDocumentSerializer,HomeSerializer,UserSerializer,PatientCreateSerializer,PatientDetailsSerializer,HistorySerializer
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import viewsets
 from django.contrib.auth import login,logout,authenticate
 from rest_framework import status
 from rest_framework.response import Response
+from django.shortcuts import render
 # from drf_haystack.viewsets import HaystackViewSet
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser,FileUploadParser
+from .documents import PatientDocument
+from django.http import Http404
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -32,31 +35,44 @@ class LoginView(APIView):
             return Response(login(request,user))
         else:
             return Response({"wrong credential providers"},status = status.HTTP_404_NOT_FOUND)
-# class PatientSearch(HaystackViewSet):
-#     index_models = [Patient]
-#     serializer_class = PatientSearchSerializer
 class HomeView(viewsets.ModelViewSet):
     serializer_class = HomeSerializer
     queryset = Home.objects.order_by('-pub_date')
-from django_elasticsearch_dsl_drf.constants import (
-    LOOKUP_FILTER_RANGE,
-    LOOKUP_QUERY_IN,
-    LOOKUP_QUERY_GT,
-    LOOKUP_QUERY_GTE,
-    LOOKUP_QUERY_LT,
-    LOOKUP_QUERY_LTE,
-)
-from django_elasticsearch_dsl_drf.filter_backends import (
-    FilteringFilterBackend,
-    OrderingFilterBackend,
-    DefaultOrderingFilterBackend,
-    SearchFilterBackend,
-)
-from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
+def search(request):
+    q = request.GET.get('q')
+    if q:
+        posts = PatientDocument.search().query("match",hospital_number=q)
+    else:
+        posts = 'none found'
+    return render(request,'search.html',{'posts':posts})
+class SearchView(APIView):
+    def get(self,request):
+        q = request.query_params.get('q')
+        if q:
+            posts = PatientDocument.search().query("match",hospital_number=q)
+            serializer = PatientDocumentSerializer(posts)
+            return Response(serializer.data)
+        else:
+            posts = "none found"
+            return Response(posts)
+from rest_framework.decorators import api_view
 
-from eafya import documents as articles_documents
-from eafya import serializers as articles_serializers
-class PatientViewSet(DocumentViewSet):
-    document = articles_documents.PatientDocument
-    serializer_class = articles_serializers.PatientDocumentSerializer
-    lookup_field = 'hospital_number'
+@api_view(['GET'])
+def searchs(request):
+    q = request.GET.get('q')
+    if q:
+        posts = PatientDocument.search().query("match",hospital_number=q).to_dict()
+        # serializer = PatientDocumentSerializer(posts,many=True)
+        return Response(posts)
+    else:
+        posts = "none found"
+        return Response(posts)
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter,SearchFilter
+from rest_framework import filters
+class PatientSearch(viewsets.ModelViewSet):
+    serializer_class = PatientDetailsSerializer
+    queryset = Patient.objects.all()
+    # fiter_backends = (DjangoFilterBackend,SearchFilter,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=name','=hospital_number',)

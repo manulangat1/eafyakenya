@@ -45,12 +45,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         send_welcome_email_task.delay(username,email)
         return user
-# class PatientSearchSerializer(HaystackSerializer):
-#     class Meta:
-#         index_classes = [PatientIndex]
-#         fields = [
-#           "name","hospital_number"
-#         ]
 class HomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Home

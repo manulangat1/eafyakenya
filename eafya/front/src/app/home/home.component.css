@@ -1,42 +1,92 @@
 .home{
   margin: 0;
   padding: 0;
-  background-color: rgb(0,255,255);
+  background-color: rgba(245, 0.2, 0.156, 0.5);
+  background-attachment: fixed;
+  height: 100%;
+  background-size: 100%;
+  font-family: exo, sans-serif;
+}
+.topnav-centered  {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topnav-right {
+  float: right;
+}
+
+.hos{
+  background-color: #f2f2f2;
+  text-align: center;
+  width: 868px;
+  margin: auto;
+  /* margin-left: 300px; */
+  margin-top: 29px;
+  padding: 1em;
   height: 100%;
 }
-.hos{
-  /* text-align: center; */
-  /* width: 600px; */
-  margin-top: 29px;
-  margin-right:  290px;
-  border-right: 3px solid gray;
-  padding: 1em;
+.hos .pls{
+  padding: 100px;
 }
-.anno{
+.hos .pls img{
   float: right;
-  width: 200px;
-  margin: 0;
-  /* padding: em; */
+  width: 300px;
+  height: 250px;
+  border-radius: 4px;
 }
-/* input{
+.hos .pls h6{
+  font-style: italic;
+}
+.hos .homes{
+  clear: right;
+}
+.registration{
+  padding-top: 10px;
+}
+.registration .form-group{
   text-align: center;
-  margin-right: 50%;
-} */
-hr {
-  color: #111;
+  margin: 3px solid red;
+  background-color: rgba(150, 190, 249, 0.5);
 }
-.navigation ul {
+.registration .form-group input{
+  margin-top: 30px;
+  width: 60%;
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+.registration .form-group button{
+  width: 40%;
+  border-radius: 12px;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+}
+.navigation{
+  position: fixed;
+  background-color: #111;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+ .navigation ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #f133f3;
+  background-color: #111;
   position: fixed;
   top: 0;
   width: 100%;
 }
 .navigation ul li{
-  float: left;
+  float: right;
   border-right: 1px solid #bbb;
 }
 .navigation ul li:last-child{
@@ -50,5 +100,11 @@ hr {
   text-decoration: none;
 }
 .navigation ul li a:hover{
-  background-color: #111;
+  background-color: #1ab1c1;
+}
+.footer{
+  margin-top: 400px;
+}
+html{
+  height: 100%;
 }

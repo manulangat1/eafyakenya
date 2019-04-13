@@ -11,6 +11,7 @@ import { ButtonsDirective } from './buttons.directive';
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
 import { HomeComponent } from './home/home.component';
 import { HomedetailsComponent } from './homedetails/homedetails.component';
+import { HistoryaddComponent } from './historyadd/historyadd.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomedetailsComponent } from './homedetails/homedetails.component';
     ButtonsDirective,
     PatientRegisterComponent,
     HomeComponent,
-    HomedetailsComponent
+    HomedetailsComponent,
+    HistoryaddComponent
   ],
   imports: [
     BrowserModule,

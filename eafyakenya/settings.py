@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eafya.apps.EafyaConfig',
     'rest_framework',
-    'django_elasticsearch_dsl'
-    # 'haystack'
+    'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
